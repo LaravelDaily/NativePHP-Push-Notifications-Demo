@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Native\Mobile\Providers\PushNotificationsServiceProvider;
+use Native\Mobile\UI\NativeUIServiceProvider;
+use NativePHP\LocalNotifications\LocalNotificationsServiceProvider;
+
+class NativeServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+
+    /**
+     * The NativePHP plugins to enable.
+     *
+     * Only plugins listed here will be compiled into your native builds.
+     * This is a security measure to prevent transitive dependencies from
+     * automatically registering plugins without your explicit consent.
+     *
+     * @return array<int, class-string<ServiceProvider>>
+     */
+    public function plugins(): array
+    {
+        return [
+            NativeUIServiceProvider::class,
+            LocalNotificationsServiceProvider::class,
+            PushNotificationsServiceProvider::class,
+
+        ];
+    }
+}
